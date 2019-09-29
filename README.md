@@ -3,6 +3,7 @@
 ##### JCP Danger Sound Server : JCP 프로젝트 청각장애인을 위한 위험소리 분류모델 서버
 
 - Server URL : 미정
+- JCP Repository : https://github.com/allcle/JCP
 
 
 

@@ -34,8 +34,9 @@ $ source env/bin/activate
 (env)$ pip install pillow
 (env)$ pip install matplotlib
 
-# 서버 실행
+# 테스트 서버 실행 확인
 $ python manage.py runserver
+
 ```
 
 

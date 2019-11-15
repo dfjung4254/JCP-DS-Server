@@ -43,7 +43,24 @@ $ python manage.py runserver
 (env)$ uwsgi --socket :8001 --module jcp.wsgi
 
 ```
-
+### Installing Error
+1. **OSError: sndfile library not fond**
+> 간혹 클라우드 인스턴스에 기본 사운드 라이브러리가 설치가 안되어 있을 수 있습니다.
+> 관련 라이브러리를 apt-get 설치해주시면 됩니다.
+> 참고자료(StackOverflow) : https://stackoverflow.com/questions/55086834/cant-import-soundfile-python/55086878  
+```
+$ sudo apt-get install libsndfile1
+```
+2. **접속 시도 중 Invalid HTTP_HOST header: '18.216.246.234:8000'.
+You may need to add '18.216.246.234' to ALLOWED_HOSTS. 에러로그 발생 시**
+> settings.py 의 ALLOWED_HOSTS 값에 본 서버의 호스트 주소가 누락되었습니다.
+> 설치할 서버의 IP 주소를 추가해주면 됩니다.
+```
+# To debug 허용된 호스트 - 안드로이드 가상환경에서는 localhost 를 10.0.2.2 로 접근한다.
+# 임시 GCE 서버 IP : 35.223.183.56
+# 한이음 AWS 서버 IP : 18.216.246.234
+ALLOWED_HOSTS = ['10.0.2.2', 'localhost', '35.233.183.56', '18.216.246.234']
+```
 
 
 

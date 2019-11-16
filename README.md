@@ -2,9 +2,12 @@
 
 ##### JCP Danger Sound Server : JCP 프로젝트 청각장애인을 위한 위험소리 분류모델 서버
 
-**GCE(임시) + Ubuntu18.04 + Django + Nginx 로 운영중입니다.**
+~~**GCE(임시) + Ubuntu18.04 + Django + Nginx 로 운영중입니다.**~~
 
-- Server URL : http://35.233.183.56:8000 (임시)
+**AWS + Ubuntu18.04 + Django + Nginx 로 운영중입니다.** 
+
+- Server IP : 18.216.246.234
+- Server URL : https://ec2-18-216-246-234.us-east-2.compute.amazonaws.com/
 - JCP Repository : https://github.com/allcle/JCP
 
 
@@ -42,6 +45,10 @@ $ python manage.py runserver
 # 실 서버 가동(Nginx, uWSGI 환경 설정 완료상태)
 (env)$ uwsgi --socket :8001 --module jcp.wsgi
 
+# Nginx + SSL 처리방법 - CA 없이 openssl 사용
+- https://blog.iwanhae.ga/nginx-ssl-https/
+
+
 ```
 ### Installing Error
 1. **OSError: sndfile library not fond**
@@ -72,7 +79,7 @@ ALLOWED_HOSTS = ['10.0.2.2', 'localhost', '35.233.183.56', '18.216.246.234',
 |   Request Type    |            Request Value             |
 | :---------------: | :----------------------------------: |
 |     `Method`      |                `POST`                |
-|       `URL`       | `http://35.233.183.56:8000/uploads/` |
+|       `URL`       | `https://ec2-18-216-246-234.us-east-2.compute.amazonaws.com/uploads/` |
 |    **HEADER**     |                                      |
 |  `Content-Type`   |        `multipart/form-data`         |
 |     **BODY**      |                                      |
@@ -87,7 +94,7 @@ ALLOWED_HOSTS = ['10.0.2.2', 'localhost', '35.233.183.56', '18.216.246.234',
 
 ```
 $ curl -X POST \
-  http://35.233.183.56:8000/uploads/ \
+  https://ec2-18-216-246-234.us-east-2.compute.amazonaws.com/uploads/ \
   -H 'cache-control: no-cache' \
   -H 'content-type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW' \
   -F file=@dog_bark35.wav
@@ -102,7 +109,7 @@ $ curl -X POST \
 ```
 POST /uploads/ HTTP/1.1
 Content-Length: 300108
-Host: 35.233.183.56:8000
+Host: https://ec2-18-216-246-234.us-east-2.compute.amazonaws.com/
 Content-Type: multipart/form-data;boundary=------FormBoundaryShouldDifferAtRuntime
 
 ------FormBoundaryShouldDifferAtRuntime

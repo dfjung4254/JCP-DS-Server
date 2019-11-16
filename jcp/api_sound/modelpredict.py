@@ -1,3 +1,5 @@
+import datetime
+
 class ModelPredict:
     def ensemble(models, x_train):
 
@@ -7,7 +9,7 @@ class ModelPredict:
         maximum = 0
         maxIndex = 0
 
-        print("##### Model predicting...")
+        print("##### Model predicting... at " + datetime.datetime.now())
 
         for model in models:
             tempPredict = model.predict_classes(x_train[0:1, :], verbose = 0)
@@ -19,7 +21,7 @@ class ModelPredict:
                 maximum = classPredict[j]
                 maxIndex = j
 
-        print("##### Model predict success the Result is...")
+        print("##### Model predict success the Result is... at " + datetime.datetime.now())
         print("##### ", end = "")
         print(classPredict, end = " : ")
         print(maxIndex)

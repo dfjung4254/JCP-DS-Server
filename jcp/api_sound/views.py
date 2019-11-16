@@ -18,6 +18,8 @@ from jcp.api_sound.preprocessor import PreProcessor
 # Modeling library
 from jcp.api_sound.modelpredict import ModelPredict
 
+# Time library for performance profiling
+import datetime
 
 """
 
@@ -85,7 +87,7 @@ def classifySound(request):
     ## 클라이언트에서 요청 바디의 파일을 받아온다
     f = request.data['file']
     file_name = f.name
-    print("##### Requested sound data : " + file_name)
+    print("##### Requested sound data : " + file_name + " at " + datetime.datetime.now())
     print(f)
     print(type(f))
 

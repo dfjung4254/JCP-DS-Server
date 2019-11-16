@@ -9,7 +9,8 @@ class ModelPredict:
         maximum = 0
         maxIndex = 0
 
-        print("##### Model predicting... at " + datetime.datetime.now())
+        print("##### Model predicting... at ")
+        print(datetime.datetime.now())
 
         for model in models:
             tempPredict = model.predict_classes(x_train[0:1, :], verbose = 0)
@@ -21,7 +22,8 @@ class ModelPredict:
                 maximum = classPredict[j]
                 maxIndex = j
 
-        print("##### Model predict success the Result is... at " + datetime.datetime.now())
+        print("##### Model predict success the Result is... at ")
+        print(datetime.datetime.now())
         print("##### ", end = "")
         print(classPredict, end = " : ")
         print(maxIndex)

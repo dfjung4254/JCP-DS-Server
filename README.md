@@ -36,7 +36,7 @@ $ source env/bin/activate
 (env)$ pip install matplotlib
 
 # 테스트 서버 실행 확인
-$ python manage.py runserver
+$ python manage.py runserver 0.0.0.0:8000
 
 # Nginx, uWSGI 연동방법
  - https://uwsgi-docs.readthedocs.io/en/latest/tutorials/Django_and_nginx.html
@@ -70,7 +70,12 @@ You may need to add '18.216.246.234' to ALLOWED_HOSTS. 에러로그 발생 시**
 ALLOWED_HOSTS = ['10.0.2.2', 'localhost', '35.233.183.56', '52.79.242.64', 
 'ec2-52-79-242-64.ap-northeast-2.compute.amazonaws.com']
 ```
-
+3. **uwsgi 설치 중 fatal error: Python.h: No such file or directory 오류 발생**
+> uwsgi 설치 중 <Python.h> 모듈을 불러 올 수 없어서 그렇습니다. python3-dev 패키지를 설치하면 해결됩니다.
+```
+$ sudo apt-get install python3-dev
+(env)$ pip install uwsgi 
+```
 
 
 

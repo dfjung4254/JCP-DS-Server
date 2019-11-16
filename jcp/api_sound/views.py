@@ -19,7 +19,7 @@ from jcp.api_sound.preprocessor import PreProcessor
 from jcp.api_sound.modelpredict import ModelPredict
 
 # Time library for performance profiling
-import datetime
+import time
 
 """
 
@@ -88,7 +88,7 @@ def classifySound(request):
     f = request.data['file']
     file_name = f.name
     print("##### Requested sound data : " + file_name + " at ")
-    print(datetime.datetime.now())
+    print(time.time())
     print(f)
     print(type(f))
 
@@ -103,7 +103,7 @@ def classifySound(request):
     x_test = PreProcessor.processImageToXTrain(pil_image, image_width, image_height, channels)
 
     ## 전처리 데이터를 앙상블 방식으로 예상값 도출
-    result = ModelPredict.ensemble(models, x_test)
+    result = ModelPredict().ensemble(models, x_test)
 
     return Response({"result": result, "sound": strSound[result]})
 
